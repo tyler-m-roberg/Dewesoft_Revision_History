@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <TypeLibraryGuid>18657060-af5c-44f7-82d3-e30c98d0169e</TypeLibraryGuid>
+    <ClassGuid>48a1497b-ae52-4230-8b0c-026679c12110</ClassGuid>
+    <PluginName>RevisionHistoryPlugin</PluginName>
+    <PluginDisplayName>Revision History</PluginDisplayName>
+    <PluginDescription>Track revision history of DEWESoft setup files.</PluginDescription>
+    <PluginVendor>N/A</PluginVendor>
+    <PluginVersionMajor>1</PluginVersionMajor>
+    <PluginVersionMinor>0</PluginVersionMinor>
+    <PluginVersionRelease>0</PluginVersionRelease>
+    <PluginCopyright>Tyler M Roberg</PluginCopyright>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <Midl />
+    <Midl />
+    <ClCompile>
+      <PreprocessorDefinitions>_LIB_NAME=$(PluginName);_PLUGIN_NAME=$(PluginName);_PLUGIN_DISPLAY_NAME=$(PluginDisplayName);_PLUGIN_VERSION_MAJOR=$(PluginVersionMajor);_PLUGIN_VERSION_MINOR=$(PluginVersionMinor);_PLUGIN_VERSION_RELEASE=$(PluginVersionRelease);_PLUGIN_VENDOR=$(PluginVendor);_PLUGIN_DESCRIPTION=$(PluginDescription);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Midl>
+      <PreprocessorDefinitions>_CLASS_GUID=$(ClassGuid);_LIB_GUID=$(TypeLibraryGuid);_LIB_NAME=$(PluginName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="TypeLibraryGuid">
+      <Value>$(TypeLibraryGuid)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="ClassGuid">
+      <Value>$(ClassGuid)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginName">
+      <Value>$(PluginName)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginDisplayName">
+      <Value>$(PluginDisplayName)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginDescription">
+      <Value>$(PluginDescription)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginVendor">
+      <Value>$(PluginVendor)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PluginVersionMajor">
+      <Value>$(PluginVersionMajor)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginVersionMinor">
+      <Value>$(PluginVersionMinor)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginVersionRelease">
+      <Value>$(PluginVersionRelease)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginCopyright">
+      <Value>$(PluginCopyright)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
