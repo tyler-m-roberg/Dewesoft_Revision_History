@@ -68,6 +68,7 @@ void DewesoftBridge::onClearSetup()
 
 void DewesoftBridge::onNewSetup()
 {
+    revisionHistory = "";
     sineGenerator.addSineWave(1.0, 0.0);
     sineGenerator.addSineWave(1.0, M_PI / 2.0, 1.0);
     sineGenerator.addSineWave(2.0, M_PI, 10.0);
@@ -76,11 +77,13 @@ void DewesoftBridge::onNewSetup()
 void DewesoftBridge::onLoadSetup(NodePtr node, bool dataFile)
 {
     sineGenerator.loadSetup(node);
+    node->read(u8"RevisionHistory", revisionHistory, "");
 }
 
 void DewesoftBridge::onSaveSetup(NodePtr node, bool dataFile)
 {
     sineGenerator.saveSetup(node);
+    node->write(u8"RevisionHistory", revisionHistory);
 }
 
 void DewesoftBridge::onPreInitiate()

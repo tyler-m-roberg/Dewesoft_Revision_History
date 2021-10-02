@@ -57,6 +57,8 @@ public:
 
 	static HMODULE DllModule;
 
+    std::string revisionHistory;
+
 private:
 	InputManagerImpl& inputManager;
 	OutputFactoryImpl& outputFactory;

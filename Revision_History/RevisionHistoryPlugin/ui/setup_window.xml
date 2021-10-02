@@ -13,7 +13,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="5"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -24,19 +24,24 @@
                     <ColumnDefinition Width="5"/>
                     <ColumnDefinition Width="60"/>
                     <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="70"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Text="Placeholder" Grid.Column="1" Grid.Row="2" Name="txtMajor" />
-                <TextBox Text="Placeholder" Grid.Column="3" Grid.Row="2"  Name="txtMinor"/>
-                <TextBox Text="Placeholder" Grid.Column="5" Grid.Row="2"  Name="txtRevision"/>
-                <TextBox Text="Placeholder" Grid.Column="7" Grid.Row="2"  Name="txtBuild"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Name="txtMajor" />
+                <TextBox Grid.Column="3" Grid.Row="2"  Name="txtMinor"/>
+                <TextBox Grid.Column="5" Grid.Row="2"  Name="txtRevision"/>
+                <TextBox Grid.Column="7" Grid.Row="2"  Name="txtBuild"/>
+
+                <Label Text="Major" Grid.Column="1" Grid.Row="0" />
+                <Label Text="Minor" Grid.Column="3" Grid.Row="0"/>
+                <Label Text="Revision" Grid.Column="5" Grid.Row="0"/>
+                <Label Text="Build Number" Grid.Column="7" Grid.Row="0"/>
 
             </Grid>
         </CaptionPanel>
         <CaptionPanel Grid.Row="1" Grid.Column="0" Title="Revisions" Name="revisionPanel">
             <Grid>
-                <Memo Name="revisionHistoryMemo"/>
+                <Memo Height="100" Width="200" Name="revisionHistoryMemo" />
             </Grid>
         </CaptionPanel>
     </Grid>    

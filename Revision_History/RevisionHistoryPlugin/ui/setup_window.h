@@ -17,6 +17,8 @@ public:
     void setupEnter();
     void setupLeave();
 
+    Dewesoft::MUI::Memo memoTxt;
+
 private:
 	Dewesoft::MUI::Timer uiRefreshTimer;
 	
