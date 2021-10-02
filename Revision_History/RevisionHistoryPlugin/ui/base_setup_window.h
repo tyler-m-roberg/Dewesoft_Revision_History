@@ -21,39 +21,23 @@ public:
 protected:
     DewesoftBridge& bridge;
 
-    Dewesoft::MUI::CaptionPanel myPanel1;
-    Dewesoft::MUI::Label textBoxLabel;
-    Dewesoft::MUI::TextBox labelEdit;
-    Dewesoft::MUI::Label selectedItemLabel;
-    Dewesoft::MUI::ComboBox comboBox1;
-    Dewesoft::MUI::StackPanel enableDisableStackPanel;
-    Dewesoft::MUI::Button showModal;
-    Dewesoft::MUI::CheckBox showHideTextBox;
-    Dewesoft::MUI::CaptionPanel myPanel2;
-    Dewesoft::MUI::TabControl TabTest;
-    Dewesoft::MUI::TextBlock SampleText;
-    Dewesoft::MUI::RadioButton Radio1;
-    Dewesoft::MUI::RadioButton Radio2;
-    Dewesoft::MUI::TextBlock ImageText;
-    Dewesoft::MUI::DSDrawGrid channelGrid;
+    Dewesoft::MUI::CaptionPanel versionTrackingPanel;
+    Dewesoft::MUI::TextBox txtMajor;
+    Dewesoft::MUI::TextBox txtMinor;
+    Dewesoft::MUI::TextBox txtRevision;
+    Dewesoft::MUI::TextBox txtBuild;
+    Dewesoft::MUI::CaptionPanel revisionPanel;
+    Dewesoft::MUI::Memo revisionHistoryMemo;
 
     BaseSetupWindow(Dewesoft::MUI::WindowPtr& ui, DewesoftBridge& bridge, std::string pathToXmlFile) : DSWindow (ui, pathToXmlFile), bridge(bridge)
     {
         // connect class to UI controls
-        myPanel1 = Dewesoft::MUI::CaptionPanel::Connect(ui, "myPanel1");
-        textBoxLabel = Dewesoft::MUI::Label::Connect(ui, "textBoxLabel");
-        labelEdit = Dewesoft::MUI::TextBox::Connect(ui, "labelEdit");
-        selectedItemLabel = Dewesoft::MUI::Label::Connect(ui, "selectedItemLabel");
-        comboBox1 = Dewesoft::MUI::ComboBox::Connect(ui, "comboBox1");
-        enableDisableStackPanel = Dewesoft::MUI::StackPanel::Connect(ui, "enableDisableStackPanel");
-        showModal = Dewesoft::MUI::Button::Connect(ui, "showModal");
-        showHideTextBox = Dewesoft::MUI::CheckBox::Connect(ui, "showHideTextBox");
-        myPanel2 = Dewesoft::MUI::CaptionPanel::Connect(ui, "myPanel2");
-        TabTest = Dewesoft::MUI::TabControl::Connect(ui, "TabTest");
-        SampleText = Dewesoft::MUI::TextBlock::Connect(ui, "SampleText");
-        Radio1 = Dewesoft::MUI::RadioButton::Connect(ui, "Radio1");
-        Radio2 = Dewesoft::MUI::RadioButton::Connect(ui, "Radio2");
-        ImageText = Dewesoft::MUI::TextBlock::Connect(ui, "ImageText");
-        channelGrid = Dewesoft::MUI::DSDrawGrid::Connect(ui, "channelGrid");
+        versionTrackingPanel = Dewesoft::MUI::CaptionPanel::Connect(ui, "versionTrackingPanel");
+        txtMajor = Dewesoft::MUI::TextBox::Connect(ui, "txtMajor");
+        txtMinor = Dewesoft::MUI::TextBox::Connect(ui, "txtMinor");
+        txtRevision = Dewesoft::MUI::TextBox::Connect(ui, "txtRevision");
+        txtBuild = Dewesoft::MUI::TextBox::Connect(ui, "txtBuild");
+        revisionPanel = Dewesoft::MUI::CaptionPanel::Connect(ui, "revisionPanel");
+        revisionHistoryMemo = Dewesoft::MUI::Memo::Connect(ui, "revisionHistoryMemo");
     }
 };
