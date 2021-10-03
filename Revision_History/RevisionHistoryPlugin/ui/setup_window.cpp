@@ -38,7 +38,6 @@ SetupWindow::SetupWindow(WindowPtr ui, DewesoftBridge& bridge)
     minorTxt.setText("");
     revTxt.setText("");
     buildTxt.setText("");
-
 }
 
 SetupWindow::~SetupWindow()
@@ -49,8 +48,7 @@ void SetupWindow::setupEnter()
 {
     uiRefreshTimer.setEnabled(true);
 
-    memoTxt.setText("");
-
+    memoTxt.clear();
     std::istringstream iss(bridge.revisionHistory);
     std::string token;
 
@@ -72,17 +70,6 @@ void SetupWindow::setupLeave()
     tempString.erase(std::remove(tempString.begin(), tempString.end(), '\r'), tempString.end());
     bridge.revisionHistory = tempString;
 
-    if (majorTxt.getText() != "")
-        bridge.majorVer = std::stoi(majorTxt.getText().toStdString());
-
-    if (minorTxt.getText() != "")
-        bridge.minorVer = std::stoi(minorTxt.getText().toStdString());
-
-    if (revTxt.getText() != "")
-        bridge.revVer = std::stoi(revTxt.getText().toStdString());
-
-    if (buildTxt.getText() != "")
-        bridge.buildVer = std::stoi(buildTxt.getText().toStdString());
 }
 
 void SetupWindow::onEditTextChanged(Dewesoft::MUI::Memo& memoBox, Dewesoft::MUI::EventArgs& args)
@@ -116,5 +103,3 @@ void SetupWindow::onBuildTextChanged(Dewesoft::MUI::TextBox& txtBox, Dewesoft::M
     if (buildTxt.getText() != "")
         bridge.buildVer = std::stoi(buildTxt.getText().toStdString());
 }
-
-
