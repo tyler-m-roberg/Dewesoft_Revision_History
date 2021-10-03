@@ -19,30 +19,31 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5"/>
                     <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="70"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Column="1" Grid.Row="2" Name="txtMajor" />
-                <TextBox Grid.Column="3" Grid.Row="2"  Name="txtMinor"/>
-                <TextBox Grid.Column="5" Grid.Row="2"  Name="txtRevision"/>
-                <TextBox Grid.Column="7" Grid.Row="2"  Name="txtBuild"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Name="txtMajor" Numeric="True" ValidateType="Integer"/>
+                <TextBox Grid.Column="3" Grid.Row="2"  Name="txtMinor" Numeric="True" ValidateType="Integer"/>
+                <TextBox Grid.Column="5" Grid.Row="2"  Name="txtRevision" Numeric="True" ValidateType="Integer"/>
+                <TextBox Grid.Column="7" Grid.Row="2"  Name="txtBuild" Numeric="True" ValidateType="Integer"/>
 
-                <Label Text="Major" Grid.Column="1" Grid.Row="0" />
-                <Label Text="Minor" Grid.Column="3" Grid.Row="0"/>
-                <Label Text="Revision" Grid.Column="5" Grid.Row="0"/>
-                <Label Text="Build Number" Grid.Column="7" Grid.Row="0"/>
+                <Label Text="Major" Grid.Column="1" Grid.Row="0" TextAlign="Center"/>
+                <Label Text="Minor" Grid.Column="3" Grid.Row="0" TextAlign="Center"/>
+                <Label Text="Revision" Grid.Column="5" Grid.Row="0" TextAlign="Center"/>
+                <Label Text="Build Number" Grid.Column="7" Grid.Row="0" TextAlign="Center"/>
 
             </Grid>
         </CaptionPanel>
         <CaptionPanel Grid.Row="1" Grid.Column="0" Title="Revisions" Name="revisionPanel">
             <Grid>
-                <Memo Height="100" Width="200" Name="revisionHistoryMemo" />
+                <Memo Name="revisionHistoryMemo" Text=""/>
             </Grid>
         </CaptionPanel>
     </Grid>    
 </Window>
+

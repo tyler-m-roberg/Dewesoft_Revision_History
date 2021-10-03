@@ -13,7 +13,10 @@ DewesoftBridge::DewesoftBridge(InputManagerImpl& inputManager, OutputFactoryImpl
     , outputFactory(outputFactory)
     , app(app)
     , pluginGroup(nullptr)
-    , sineGenerator(outputFactory)
+    , majorVer(1)
+    , minorVer(1)
+    , revVer(1)
+    , buildVer(1)
 {
 }
 
@@ -41,10 +44,6 @@ void DewesoftBridge::onEnterHardwareSetup()
 
 void DewesoftBridge::onUpdateSettings(NodePtr node)
 {
-    if (node->isWrite())
-        sineGenerator.saveSettings(node);
-    else
-        sineGenerator.loadSettings(node);
 }
 
 void DewesoftBridge::onInitiateHardware()
@@ -58,32 +57,46 @@ void DewesoftBridge::onSetupEnter(const bool analysisMode)
 
 void DewesoftBridge::onSetupLeave(const bool analysisMode)
 {
-	setupWindow->setupLeave();
+    setupWindow->setupLeave();
 }
 
 void DewesoftBridge::onClearSetup()
 {
-    sineGenerator.clear();
 }
 
 void DewesoftBridge::onNewSetup()
 {
     revisionHistory = "";
-    sineGenerator.addSineWave(1.0, 0.0);
-    sineGenerator.addSineWave(1.0, M_PI / 2.0, 1.0);
-    sineGenerator.addSineWave(2.0, M_PI, 10.0);
 }
 
 void DewesoftBridge::onLoadSetup(NodePtr node, bool dataFile)
 {
-    sineGenerator.loadSetup(node);
+    // Read revision history from xml node
     node->read(u8"RevisionHistory", revisionHistory, "");
+
+    // Read version info from xml node
+    const auto VersionInformationNode = node->findChildNode(u8"VersionInformation");
+
+    if (VersionInformationNode != NULL)
+    {
+        VersionInformationNode->read(u8"MajorVersion", majorVer, 1);
+        VersionInformationNode->read(u8"MinorVersion", minorVer, 0);
+        VersionInformationNode->read(u8"RevisionVersion", revVer, 0);
+        VersionInformationNode->read(u8"BuildVersion", buildVer, 1);
+    }
 }
 
 void DewesoftBridge::onSaveSetup(NodePtr node, bool dataFile)
 {
-    sineGenerator.saveSetup(node);
+    // Write revision history to xml node
     node->write(u8"RevisionHistory", revisionHistory);
+
+    // Write version numbers to xml node
+    const auto VersionInformationNode = node->addChild(u8"VersionInformation");
+    VersionInformationNode->write(u8"MajorVersion", majorVer);
+    VersionInformationNode->write(u8"MinorVersion", minorVer);
+    VersionInformationNode->write(u8"RevisionVersion", revVer);
+    VersionInformationNode->write(u8"BuildVersion", buildVer);
 }
 
 void DewesoftBridge::onPreInitiate()
@@ -99,8 +112,6 @@ void DewesoftBridge::onGetData(const AcquiredDataInfo& acquiredDataInfo)
     const double sampleRate = inputManager.getCurrentSampleRate();
     const double startTime = acquiredDataInfo.beginPos / sampleRate;
     const size_t numSamples = acquiredDataInfo.endPos - acquiredDataInfo.beginPos;
-
-    sineGenerator.getData(startTime, sampleRate, numSamples);
 }
 
 void DewesoftBridge::onStopData()
@@ -117,7 +128,6 @@ void DewesoftBridge::onStopStoring()
 
 void DewesoftBridge::onPrepareAnalysis()
 {
-    
 }
 
 void DewesoftBridge::onStartAnalysis()

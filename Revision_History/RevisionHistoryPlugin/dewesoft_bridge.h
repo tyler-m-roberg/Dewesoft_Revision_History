@@ -3,7 +3,6 @@
 #include "dcomlib/dcom_utils/dewesoft_dcom_node.h"
 #include <dcomlib/dcom_utils/plugin_types.h>
 
-#include "sine_generator.h"
 #include "ui/settings_window.h"
 #include "ui/setup_window.h"
 #include <dcomlib/dcom_input_channel/input_manager_impl.h>
@@ -58,6 +57,10 @@ public:
 	static HMODULE DllModule;
 
     std::string revisionHistory;
+    int majorVer;
+    int minorVer;
+    int revVer;
+    int buildVer;
 
 private:
 	InputManagerImpl& inputManager;
@@ -69,5 +72,4 @@ private:
 	std::unique_ptr<SetupWindow> setupWindow;
 	std::unique_ptr<SettingsWindow> settingsWindow;
 
-	SineGenerator sineGenerator;
 };
