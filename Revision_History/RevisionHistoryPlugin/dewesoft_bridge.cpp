@@ -14,8 +14,8 @@ DewesoftBridge::DewesoftBridge(InputManagerImpl& inputManager, OutputFactoryImpl
     , app(app)
     , pluginGroup(nullptr)
     , majorVer(1)
-    , minorVer(1)
-    , revVer(1)
+    , minorVer(0)
+    , revVer(0)
     , buildVer(1)
 {
 }
@@ -67,6 +67,10 @@ void DewesoftBridge::onClearSetup()
 void DewesoftBridge::onNewSetup()
 {
     revisionHistory = "";
+    majorVer = 1;
+    minorVer = 0;
+    revVer = 0;
+    buildVer = 1;
 }
 
 void DewesoftBridge::onLoadSetup(NodePtr node, bool dataFile)

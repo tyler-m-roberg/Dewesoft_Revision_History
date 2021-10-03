@@ -29,6 +29,15 @@ SetupWindow::SetupWindow(WindowPtr ui, DewesoftBridge& bridge)
     SetupWindow::revTxt = TextBox::Connect(ui, "txtRevision");
     SetupWindow::buildTxt = TextBox::Connect(ui, "txtBuild");
 
+    majorTxt.OnTextChanged += event(&SetupWindow::onMajorTextChanged);
+    minorTxt.OnTextChanged += event(&SetupWindow::onMinorTextChanged);
+    revTxt.OnTextChanged += event(&SetupWindow::onRevisionTextChanged);
+    buildTxt.OnTextChanged += event(&SetupWindow::onBuildTextChanged);
+
+    majorTxt.setText("");
+    minorTxt.setText("");
+    revTxt.setText("");
+    buildTxt.setText("");
 
 }
 
@@ -82,6 +91,30 @@ void SetupWindow::onEditTextChanged(Dewesoft::MUI::Memo& memoBox, Dewesoft::MUI:
     std::string tempString = memoTxt.getText();
     tempString.erase(std::remove(tempString.begin(), tempString.end(), '\r'), tempString.end());
     bridge.revisionHistory = tempString;
+}
+
+void SetupWindow::onMajorTextChanged(Dewesoft::MUI::TextBox& txtBox, Dewesoft::MUI::EventArgs& args)
+{
+    if (majorTxt.getText() != "")
+        bridge.majorVer = std::stoi(majorTxt.getText().toStdString());
+}
+
+void SetupWindow::onMinorTextChanged(Dewesoft::MUI::TextBox& txtBox, Dewesoft::MUI::EventArgs& args)
+{
+    if (minorTxt.getText() != "")
+        bridge.minorVer = std::stoi(minorTxt.getText().toStdString());
+}
+
+void SetupWindow::onRevisionTextChanged(Dewesoft::MUI::TextBox& txtBox, Dewesoft::MUI::EventArgs& args)
+{
+    if (revTxt.getText() != "")
+        bridge.revVer = std::stoi(revTxt.getText().toStdString());
+}
+
+void SetupWindow::onBuildTextChanged(Dewesoft::MUI::TextBox& txtBox, Dewesoft::MUI::EventArgs& args)
+{
+    if (buildTxt.getText() != "")
+        bridge.buildVer = std::stoi(buildTxt.getText().toStdString());
 }
 
 
