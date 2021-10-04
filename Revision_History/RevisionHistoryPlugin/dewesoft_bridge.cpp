@@ -94,8 +94,6 @@ void DewesoftBridge::onSaveSetup(NodePtr node, bool dataFile)
 {
     // Write revision history to xml node
     node->write(u8"RevisionHistory", revisionHistory);
-
-    buildVer++;
     
     // Write version numbers to xml node
     const auto VersionInformationNode = node->addChild(u8"VersionInformation");
