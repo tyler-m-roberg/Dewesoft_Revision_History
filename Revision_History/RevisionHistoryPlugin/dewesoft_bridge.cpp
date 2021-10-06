@@ -102,9 +102,9 @@ void DewesoftBridge::onSaveSetup(NodePtr node, bool dataFile)
     VersionInformationNode->write(u8"RevisionVersion", revVer);
     VersionInformationNode->write(u8"BuildVersion", buildVer);
 
-    std::string setupFilename((const char*) app->GetUsedSetupfile(), app->GetUsedSetupfile().length());
+    std::string usedSetupFile((const char*) app->GetUsedSetupfile(), app->GetUsedSetupfile().length());
 
-    node->write(u8"UsedSetupFile", setupFilename);
+    node->write(u8"UsedSetupFile", usedSetupFile);
 
     
 }
@@ -146,7 +146,7 @@ void DewesoftBridge::onStartAnalysis()
 
 bool DewesoftBridge::isRecalculationRequired() const
 {
-    return false;
+    return true;
 }
 
 bool DewesoftBridge::showSettings(Dewesoft::MUI::IWindow* window)
