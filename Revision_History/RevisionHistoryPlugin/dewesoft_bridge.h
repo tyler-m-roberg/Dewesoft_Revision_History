@@ -62,6 +62,8 @@ public:
     int revVer;
     int buildVer;
 
+    std::string bridgeUsedSetupFile;
+
 private:
 	InputManagerImpl& inputManager;
 	OutputFactoryImpl& outputFactory;

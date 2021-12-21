@@ -88,10 +88,15 @@ void DewesoftBridge::onLoadSetup(NodePtr node, bool dataFile)
         VersionInformationNode->read(u8"RevisionVersion", revVer, 0);
         VersionInformationNode->read(u8"BuildVersion", buildVer, 1);
     }
+
+    
+     node->read(u8"UsedSetupFile", bridgeUsedSetupFile);
+    
 }
 
 void DewesoftBridge::onSaveSetup(NodePtr node, bool dataFile)
 {
+    buildVer++;
     // Write revision history to xml node
     node->write(u8"RevisionHistory", revisionHistory);
     
@@ -106,6 +111,7 @@ void DewesoftBridge::onSaveSetup(NodePtr node, bool dataFile)
 
     node->write(u8"UsedSetupFile", usedSetupFile);
 
+    bridgeUsedSetupFile = usedSetupFile;
     
 }
 
@@ -142,6 +148,7 @@ void DewesoftBridge::onPrepareAnalysis()
 
 void DewesoftBridge::onStartAnalysis()
 {
+    
 }
 
 bool DewesoftBridge::isRecalculationRequired() const

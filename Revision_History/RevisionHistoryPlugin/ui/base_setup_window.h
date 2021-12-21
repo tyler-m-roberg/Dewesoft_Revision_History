@@ -26,6 +26,7 @@ protected:
     Dewesoft::MUI::TextBox txtMinor;
     Dewesoft::MUI::TextBox txtRevision;
     Dewesoft::MUI::TextBox txtBuild;
+    Dewesoft::MUI::Label usedSetupLbl;
     Dewesoft::MUI::CaptionPanel revisionPanel;
     Dewesoft::MUI::Memo revisionHistoryMemo;
 
@@ -37,6 +38,7 @@ protected:
         txtMinor = Dewesoft::MUI::TextBox::Connect(ui, "txtMinor");
         txtRevision = Dewesoft::MUI::TextBox::Connect(ui, "txtRevision");
         txtBuild = Dewesoft::MUI::TextBox::Connect(ui, "txtBuild");
+        usedSetupLbl = Dewesoft::MUI::Label::Connect(ui, "usedSetupLbl");
         revisionPanel = Dewesoft::MUI::CaptionPanel::Connect(ui, "revisionPanel");
         revisionHistoryMemo = Dewesoft::MUI::Memo::Connect(ui, "revisionHistoryMemo");
     }

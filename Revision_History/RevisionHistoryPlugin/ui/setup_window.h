@@ -23,9 +23,11 @@ public:
     Dewesoft::MUI::TextBox minorTxt;
     Dewesoft::MUI::TextBox revTxt;
     Dewesoft::MUI::TextBox buildTxt;
+    Dewesoft::MUI::Label usedSetupLbl;
 
 private:
 	Dewesoft::MUI::Timer uiRefreshTimer;
+    DewesoftBridge& bridge;
 
     void onEditTextChanged(Dewesoft::MUI::Memo& memoBox, Dewesoft::MUI::EventArgs& args);
 
@@ -33,5 +35,6 @@ private:
     void onMinorTextChanged(Dewesoft::MUI::TextBox& txtBox, Dewesoft::MUI::EventArgs& args);
     void onRevisionTextChanged(Dewesoft::MUI::TextBox& txtBox, Dewesoft::MUI::EventArgs& args);
     void onBuildTextChanged(Dewesoft::MUI::TextBox& txtBox, Dewesoft::MUI::EventArgs& args);
+
 };
 

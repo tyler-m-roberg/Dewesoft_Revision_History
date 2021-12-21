@@ -14,6 +14,7 @@ using namespace Dewesoft::RT::Core;
 
 SetupWindow::SetupWindow(WindowPtr ui, DewesoftBridge& bridge)
     : BaseSetupWindow(ui, bridge, "ui/setup_window.xml")
+    , bridge(bridge)
 {
     uiRefreshTimer = Timer::Create(ui);
     uiRefreshTimer.setInterval(100);
@@ -28,6 +29,7 @@ SetupWindow::SetupWindow(WindowPtr ui, DewesoftBridge& bridge)
     SetupWindow::minorTxt = TextBox::Connect(ui, "txtMinor");
     SetupWindow::revTxt = TextBox::Connect(ui, "txtRevision");
     SetupWindow::buildTxt = TextBox::Connect(ui, "txtBuild");
+    SetupWindow::usedSetupLbl = Label::Connect(ui, "usedSetupLbl");
 
     majorTxt.OnTextChanged += event(&SetupWindow::onMajorTextChanged);
     minorTxt.OnTextChanged += event(&SetupWindow::onMinorTextChanged);
@@ -61,6 +63,7 @@ void SetupWindow::setupEnter()
     minorTxt.setText(std::to_string(bridge.minorVer));
     revTxt.setText(std::to_string(bridge.revVer));
     buildTxt.setText(std::to_string(bridge.buildVer));
+    usedSetupLbl.setText(bridge.bridgeUsedSetupFile);
 }
 
 void SetupWindow::setupLeave()
