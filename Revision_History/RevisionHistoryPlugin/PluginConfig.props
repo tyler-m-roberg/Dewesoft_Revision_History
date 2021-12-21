@@ -9,8 +9,8 @@
     <PluginDescription>Track revision history of DEWESoft setup files.</PluginDescription>
     <PluginVendor>N/A</PluginVendor>
     <PluginVersionMajor>2</PluginVersionMajor>
-    <PluginVersionMinor>0</PluginVersionMinor>
-    <PluginVersionRelease>1</PluginVersionRelease>
+    <PluginVersionMinor>1</PluginVersionMinor>
+    <PluginVersionRelease>0</PluginVersionRelease>
     <PluginCopyright>Tyler M Roberg</PluginCopyright>
   </PropertyGroup>
   <PropertyGroup />
