@@ -96,7 +96,7 @@ void DewesoftBridge::onLoadSetup(NodePtr node, bool dataFile)
 
 void DewesoftBridge::onSaveSetup(NodePtr node, bool dataFile)
 {
-    buildVer++;
+    //buildVer++;
     // Write revision history to xml node
     node->write(u8"RevisionHistory", revisionHistory);
     
